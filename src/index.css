@@ -1,0 +1,51 @@
+* {
+    transition: 0.4s;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-indigo-my {
+    background: #645eca;
+}
+
+.bg-ingido-gray-my {
+    background: #2c2c38;
+}
+
+.bg-indigo-dark {
+    background: #21212d;
+    width: 410px;
+}
+
+.bg-ingido-gray-my:hover {
+    background: #404053;
+    & div {
+        background: #404053;
+    }
+}
+
+.bg-ingido-gray-my:active {
+    background: #ffffff;
+    & div {
+        background: #ffffff;
+        color: #645eca;
+    }
+}
+
+.shawod-indigo-gray-my {
+    box-shadow: 0px 6px #222534;
+}
+
+.bg-gray-my {
+    background: #656877;
+}
+
+.bg-gray-my-c {
+    color: #656877;
+}
+
+.bg-opacity-gray {
+    background: #65687770;
+}
