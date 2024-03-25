@@ -1,19 +1,28 @@
 import { Select, Option } from "@material-tailwind/react";
 import React from "react";
 
-export default function SelectDefault({ listLabel }: { listLabel: string[] }) {
+export default function SelectDefault({ listLabel, onChange }: { listLabel: any, onChange: (status: string) => void }) {
+    // const selectRef = useRef<HTMLDivElement>(null);
+    const [value, setValue] = React.useState("react");
+
     return (
         <div className="w-72 border-solid border-inherit">
             <Select
                 label="Select Version"
                 className='text-white'
                 placeholder=""
-                onPointerEnterCapture={() => {}}
-                onPointerLeaveCapture={() => {}}
+                value={value}
+                onPointerEnterCapture={() => { }}
+                onPointerLeaveCapture={() => { }}
+                onChange={(val) => setValue(val)}
+                selected={(e) => {
+                    console.log(e?.props?.id);
+                    onChange(e?.props?.id);
+                }}
             >
                 {
-                    listLabel.map((labelTitle: string) => (
-                        <Option style={{ borderRadius: '0' }}>{labelTitle}</Option>
+                    listLabel.map(({ title, id }: { title: string, id: string }) => (
+                        <Option id={id} style={{ borderRadius: '0' }}>{title}</Option>
                     ))
                 }
             </Select>
