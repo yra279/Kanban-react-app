@@ -1,0 +1,12 @@
+.containersDark {
+    background: #2c2c38;
+    background-color: #2c2c38;
+    border-bottom: 1px solid #ffffff3a;
+    transition: 1s;
+}
+
+.containersLight {
+    background-color: #fff;
+    border-right: 3px solid #f4f7fd;
+    transition: 1s;
+}

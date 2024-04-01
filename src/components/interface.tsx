@@ -3,4 +3,6 @@ export default interface store {
     theme: string,
     titleTodos: any,
     listTodos: any,
+    board: any,
+    filterTitleTodos: any,
 }

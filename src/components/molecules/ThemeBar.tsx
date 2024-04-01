@@ -15,12 +15,12 @@ export default function ThemeBar() {
     }
 
     return (
-        <div className='flex p-2 bg-indigo-dark gap-4 h-11 rounded-md' style={{ width: '254px' }}>
-            <img src="./iconSun.jpg" style={{marginLeft: '45px'}} alt="" />
+        <div className={`flex p-2 gap-4 h-11 rounded-md`} style={{ width: '254px', backgroundColor: theme === 'Light' ? '#f4f7fd' : '#21212d' }}>
+            <img src="./icon-light-theme.d2e8d63e.svg"  alt="" style={{width: '18px', height: '18px', marginLeft: '55px', marginTop: '5px'}} />
             <div onClick={changeTheme} className="bg-indigo-my rounded-full cursor-pointer w-12 h-5 p-0.5 mt-1">
                 <div className='w-4 h-4 bg-white rounded-full' style={{marginLeft: `${sliderButtonActive ? '2px' : '27px'}`}}></div>
             </div>
-            <img src="./iconMoon.jpg" alt="" />
+            <img src="./icon-dark-theme.02961dba.svg" alt="" style={{width: '18px', height: '18px', marginTop: '5px'}} />
         </div>
     )
 }

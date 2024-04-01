@@ -6,6 +6,10 @@
     color: #fff;
 }
 
-.App {
+.AppDark {
     background-color: #21212d;
+}
+
+.AppLight {
+    background-color: #f4f7fd;
 }

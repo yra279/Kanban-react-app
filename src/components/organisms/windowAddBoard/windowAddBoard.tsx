@@ -5,14 +5,13 @@ import SubTasks from '../../molecules/SubTasks.tsx';
 import Button from '../../atoms/Button.tsx';
 import { useDispatch, useSelector } from 'react-redux';
 import store from '../../interface.tsx';
-import { update_board } from '../../../store/actions/board.ts';
-import { add_title, delete_title, update_title } from '../../../store/actions/todos-action.ts';
+import { add_title } from '../../../store/actions/todos-action.ts';
+import { addTitle } from '../../../store/actions/boardTitleList-action.ts';
 
-export default function MenuEditBoard({
-    open, handleOpen, handleClose, boardName, setBoardName
-}: {
-    open: boolean, handleOpen: () => void, handleClose: () => void, boardName: string, setBoardName: (name: string) => void
-}) {
+export default function MenuEditBoard(
+    { open, handleOpen, handleClose, setBoardName }:
+        { open: boolean, handleOpen: () => void, handleClose: () => void, setBoardName: (name: string) => void }
+) {
     const modalRef = useRef<HTMLDivElement>(null);
     const [nameBoard, setNameBoard] = useState('');
     const FilterTitleListTodos = useSelector((state: store) => state.filterTitleTodos);
@@ -25,6 +24,7 @@ export default function MenuEditBoard({
         function handleClickOutside(event: MouseEvent) {
             if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
                 handleClose();
+                setListColumns([]);
             }
         }
 
@@ -38,23 +38,6 @@ export default function MenuEditBoard({
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [open, handleClose]);
-
-
-    const clickButtonComplete = () => {
-        if (nameBoard !== '') {
-            dispatch(update_board(boardName, nameBoard));
-            setBoardName(nameBoard);
-        }
-
-        listColumn.map(({ title, text, id }) => {
-            if (!title) dispatch(add_title(text, boardName));
-            if (text) dispatch(update_title(id, text));
-        });
-
-        FilterTitleListTodos.filter(elem => listColumn.indexOf(elem) === -1).map(({ title, id }) => { console.log('Yes'); dispatch(delete_title(id)) });
-
-        handleClose();
-    }
 
     return (
         <Dialog
@@ -70,15 +53,33 @@ export default function MenuEditBoard({
                 ref={modalRef}
                 style={{ background: '#2c2c38', gap: '30px' }}
             >
-                Edit Board
+                Add Board
 
-                <Input textPlaceHolder='Board Name' defaultValue={boardName} onChange={setNameBoard} style={undefined} />
+                <Input
+                    textPlaceHolder='Board Name'
+                    style={undefined}
+                    defaultValue=''
+                    onChange={setNameBoard}
+                />
                 <SubTasks
                     title='Columns'
                     listTasks={listColumn}
                     setListTasks={setListColumns}
                 />
-                <Button onClick={clickButtonComplete} text='Edit Board' classNames={undefined} />
+                <Button onClick={() => {
+                    if (nameBoard) {
+                        dispatch(addTitle(nameBoard));
+                        setBoardName(nameBoard);
+                    }
+
+                    listColumn.map(({ text }) => {
+                        dispatch(add_title(text, nameBoard));
+                    });
+
+                    setListColumns([]);
+
+                    handleClose();
+                }} text='Add Board' classNames={undefined} />
             </div>
         </Dialog>
     );

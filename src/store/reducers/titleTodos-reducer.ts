@@ -1,5 +1,4 @@
-import { ADD_TITLE, DELETE_TITLE } from '../constants/todos.ts';
-import uuid from 'react-uuid';
+import { ADD_TITLE, DELETE_TITLE, UPDATE_TITLE } from '../constants/todos.ts';
 
 
 export const titleTodos = (state = [], action) => {
@@ -9,13 +8,24 @@ export const titleTodos = (state = [], action) => {
                 ...state,
                 {
                     title: [action.title],
-                    id: uuid(),
+                    id: action.id,
                 },
             ]
         } case DELETE_TITLE: {
-            return state.filter(({ title }) => title !== action.title);
-        }
-        default: {
+            return state.filter(({ id }) => id !== action.id);
+        } case UPDATE_TITLE: {
+            return state.map(({ id, title }) => {
+                if (id === action.id) return {
+                    title: action.newTitle,
+                    id: id,
+                }
+                
+                return {
+                    title,
+                    id,
+                };
+            });
+        } default: {
             return state;
         }
     }

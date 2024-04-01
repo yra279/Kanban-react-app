@@ -1,6 +1,6 @@
-import { ADD_TITLE } from "../constants/boardTitleList.ts";
+import { ADD_BOARD } from "../constants/board.ts";
 
 export const addTitle = (title: string) => ({
-    type: ADD_TITLE,
+    type: ADD_BOARD,
     title,
 });
