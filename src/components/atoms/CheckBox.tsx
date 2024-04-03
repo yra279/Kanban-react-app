@@ -1,8 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import store from '../interface'
 
 export default function CheckBox({ text, setActive, active }: { text: string, setActive: () => void, active: boolean }) {
+    const theme = useSelector((state: store) => state.theme);
+
     return (
-        <div className='flex items-center mb-4 p-5 bg-indigo-dark bg-gray-my-c rounded-md'>
+        <div className={`flex items-center mb-4 p-5 bg-indigo-dark ${theme === 'Dark' ? 'bg-indigo-dark bg-gray-my-c' : 'bg-blue-my text-black'} rounded-md`}>
 
             <input
                 id="default-checkbox"
@@ -15,7 +19,7 @@ export default function CheckBox({ text, setActive, active }: { text: string, se
 
             <label
                 htmlFor="default-checkbox"
-                className='ms-2 bg-indigo-dark text-sm font-medium text-gray-900 bg-gray-my-c'
+                className='ms-2 text-sm font-medium bg-gray-my-c'
                 style={{textDecorationLine: active ? 'line-through' : 'none'}}
             >
                 <div className='ml-3'>{text}</div>

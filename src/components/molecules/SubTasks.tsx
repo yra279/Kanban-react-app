@@ -1,9 +1,12 @@
 import React, { useRef } from 'react'
 import Button from '../atoms/Button.tsx'
 import Inputs from '../atoms/Input.tsx';
+import { useSelector } from 'react-redux';
+import store from '../interface';
 
 export default function SubTasks({ listTasks, setListTasks, title = 'Subtasks' }: { listTasks: any, setListTasks: any, title: string }) {
     const nextId = useRef(0);
+    const theme = useSelector((state: store) => state.theme);
 
     const addNewTask = () => {
         const newTask = { id: nextId.current++, text: '', active: false };
@@ -29,7 +32,7 @@ export default function SubTasks({ listTasks, setListTasks, title = 'Subtasks' }
 
     return (
         <div className='flex-col flex gap-4'>
-            <div className="text-white">
+            <div className={theme  === 'Dark' ? 'text-white' : 'text-black'}>
                 {title}
             </div>
             {
@@ -55,7 +58,7 @@ export default function SubTasks({ listTasks, setListTasks, title = 'Subtasks' }
                 })
             }
             <Button
-                classNames='w-40 buttonInvers h-12 rounded-full'
+                classNames={`w-40 ${theme === 'Dark' ? 'buttonInvers' : 'buttonInversLight'} h-12 rounded-full`}
                 text='+ Add New Subtask'
                 onClick={addNewTask}
             />

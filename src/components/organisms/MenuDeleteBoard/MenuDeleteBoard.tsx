@@ -13,6 +13,7 @@ export default function MenuDeleteBoard(
     const modalRef = useRef<HTMLDivElement>(null);
     const board = useSelector((state: store) => state.board);
     const dispatch = useDispatch();
+    const theme = useSelector((state: store) => state.theme);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -44,7 +45,7 @@ export default function MenuDeleteBoard(
             <div
                 className="flex-col rounded-md flex p-6 text-white"
                 ref={modalRef}
-                style={{ background: '#2c2c38', gap: '20px' }}
+                style={{ background: theme === 'Dark' ? '#2c2c38' : '#fff', gap: '20px' }}
             >
                 <div className="text-xl" style={{ color: 'rgb(239, 83, 80' }}>
                     Delete this board?
@@ -69,7 +70,7 @@ export default function MenuDeleteBoard(
                     <Button
                         text='Cancel'
                         onClick={() => handleClose()}
-                        classNames='buttonInvers w-50 h-12 rounded-full'
+                        classNames={`${theme === 'Dark' ? 'buttonInvers' : 'buttonInversLight'} w-50 h-12 rounded-full`}
                     />
                 </div>
             </div>

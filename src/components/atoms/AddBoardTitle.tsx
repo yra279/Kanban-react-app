@@ -15,11 +15,11 @@ export default function AddBoardsTitle({ title, onClick }: { title: string, acti
             <img
                 src='./icon-board.f2b5d463.svg'
                 alt=""
-                className={`row-auto mt-1 ml-5 w-5 h-5 ${theme === 'Light' ? 'bg-light-my' :'bg-ingido-gray-my'}`} style={{ marginLeft: '34px' }}
+                className='row-auto mt-1 ml-5 w-5 h-5' style={{ marginLeft: '34px' }}
             />
             <p
                 style={{ color: '#645eca' }}
-                className={`row pl-4 ml-3 mt-0.5 ${theme === 'Light' ? 'bg-light-my' :'bg-ingido-gray-my'}`}
+                className='row pl-4 ml-3 mt-0.5'
             >
                 {title}
             </p>

@@ -28,7 +28,7 @@ export default function Header({
             <header className={`flex flex-col-reverse ${theme === 'Dark' ? 'containersDark' : 'containersLight'} relative`}>
 
                 <div className={`${theme === 'Light' ? 'text-black ' : 'text-white'} text-2xl p-6`}>
-                    Platform Launch
+                    {boardName}
                 </div>
                 <div className="" style={{ width: activeSideBar ? '61.8%' : '77.3%' }}></div>
                 <div className="flex h-5 relative right-2" style={{ position: 'absolute', marginTop: '1rem' }}>

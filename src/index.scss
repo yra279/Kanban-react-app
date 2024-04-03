@@ -24,7 +24,7 @@
 
 .bg-light-my:hover {
     background: #f4f7fd;
-    & div, p, img {
+    & img {
         background: #f4f7fd;
     }
 }
@@ -36,14 +36,14 @@
 
 .bg-ingido-gray-my:hover {
     background: #404053;
-    & div, p, img {
+    & img {
         background: #404053;
     }
 }
 
 .bg-ingido-gray-my:active {
     background: #ffffff;
-    & div, p, img {
+    & img {
         background: #ffffff;
         color: #645eca;
     }
@@ -146,6 +146,10 @@
 }
 
 
+.bg-blue-my {
+    background: #e4ebfa;
+}
+
 .buttonAddNewTitleTaskLight {
     background: #e4ebfa;
 }
@@ -160,10 +164,28 @@
     color: #000000;
 }
 
-// input:focus {
-//     outline: none;
-// }
-
 input {
     background-color: rgba(0, 0, 0, 0);
+}
+
+.buttonInversLight {
+    color: #645eca;
+    background-color: #e4ebfa;
+    padding: 0 1rem 0 1rem;
+}
+
+.buttonInversLight:hover {
+    background-color: #645eca;
+    color: #e4ebfa;
+}
+
+.buttonInversLight:active {
+    background-color: #21212d;
+    // border: 1px #fff solid;
+    box-shadow: 0 0 3px #e4ebfa;
+    color:#656877;
+}
+
+.shadow-black-ligthTheme {
+    box-shadow: 0 1px 6px #0000006d;
 }

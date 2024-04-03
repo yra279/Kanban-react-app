@@ -18,6 +18,7 @@ export default function MenuEditBoard({
     const FilterTitleListTodos = useSelector((state: store) => state.filterTitleTodos);
     const [listColumn, setListColumns] = useState(FilterTitleListTodos);
     const dispatch = useDispatch();
+    const theme = useSelector((state: store) => state.theme);
 
 
     useEffect(() => {
@@ -66,9 +67,9 @@ export default function MenuEditBoard({
             onPointerLeaveCapture={handleClose}
         >
             <div
-                className="flex-col rounded-md flex p-6 text-white"
+                className={`flex-col rounded-md flex p-6 ${theme === 'Dark' ? 'text-white' : 'text-black'}`}
                 ref={modalRef}
-                style={{ background: '#2c2c38', gap: '30px' }}
+                style={{ background: theme === 'Dark' ? '#2c2c38' : '#fff', gap: '30px' }}
             >
                 Edit Board
 

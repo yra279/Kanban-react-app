@@ -20,6 +20,7 @@ export default function ViewTask({
     const [openParams, setOpenParams] = useState(false);
     const [openDelete, setOpenDelete] = useState(false);
     const [openEdit, setOpenEdit] = useState(false);
+    const theme = useSelector((state: store) => state.theme);
 
     const dispatch = useDispatch();
 
@@ -60,10 +61,10 @@ export default function ViewTask({
             <div
                 className="flex-col rounded-md flex justify-center justify-items-center p-6 text-white"
                 ref={modalRef}
-                style={{ background: '#2c2c38', gap: '30px', wordWrap: 'break-word', whiteSpace: 'pre-wrap', }}
+                style={{ background: theme === 'Dark' ? '#2c2c38' : '#fff', gap: '30px', wordWrap: 'break-word', whiteSpace: 'pre-wrap', }}
             >
                 <div className="flex">
-                    <div className="text-xl text-white">
+                    <div className={`text-xl ${theme === 'Dark' ? 'text-white' : 'text-black'}`}>
                         {title}
                     </div>
                     <div style={{ marginLeft: '360px' }}>

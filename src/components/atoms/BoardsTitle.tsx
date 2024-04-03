@@ -18,10 +18,10 @@ export default function BoardsTitle({ title, active, onClick }: { title: string,
                 ref={refImg}
                 src='./icon-board.f2b5d463.svg'
                 alt=""
-                className={`row-auto mt-1 w-5 h-5 `}
+                className='row-auto mt-1 w-5 h-5'
                 style={{ marginLeft: '34px' }}
             />
-            <p className={`row pl-4 ml-3 mt-0.5 ${active ? 'bg-indigo-my' : theme === 'Dark' ? 'bg-ingido-gray-my' : '#fff'} text-white`}>
+            <p className='row pl-4 ml-3 mt-0.5 text-white'>
                 {title}
             </p>
         </div>
